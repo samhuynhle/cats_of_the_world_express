@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Cat Counter</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <h1 class="m-5"> Counter: <%= counter %> </h1>
+        <a class="btn btn-primary m-5 " href="/process_counter_for_cats"> +2 Counter </a>
+
+        <a class="btn btn-danger m-5" href="/process_reset"> Rest Counter </a>
+    <div id="imagecat">
+    </div>
+
+<script>
+$(document).ready(function() {
+    $.get('https://api.thecatapi.com/v1/images/search?size=full', function(data) {
+
+        var html = '<img src="' + data[0]["url"] + '">';
+        $("#imagecat").html(html);
+    });
+});
+</script>
+
+</body>
+</html>
